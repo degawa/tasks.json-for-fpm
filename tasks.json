@@ -101,7 +101,7 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "command": "echo \"put path to executable file here\" ",
+            "command": "echo \"put relative path from wokspace folder to executable file here\" ",
             "group": "test",
             "dependsOn": [
                 "fpm install"
