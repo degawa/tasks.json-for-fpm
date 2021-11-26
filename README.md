@@ -21,6 +21,20 @@ tasks.json also provides `fpm run` and `fpm install` task. `fpm install` task in
 1. create `.vscode` directory in the project root directory
 1. copy the tasks.json to the `.vscode` directory
 
+## Additional Option
+A code snippet below for specifying shell options may be required for the command prompt in Windows.
+
+```JSON
+    "options": {
+        "shell": {
+            "executable": "${env:windir}\\system32\\cmd.exe",
+            "args": [
+                "/d",
+                "/c"
+            ]
+        }
+    },
+```
 ## Licence
 
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
