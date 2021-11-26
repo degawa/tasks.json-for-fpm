@@ -10,7 +10,7 @@ tasks.json also provides `fpm run` and `fpm install` task. `fpm install` task in
 - fpm (fortran package manager) ver. 0.1 or later.
 
 ## Usage
-
+- Put tasks.json to .vscode directory.
 - Pressing `Ctrl+Shift+B` executes `fpm build` command.
 - Running `Run Test Task` from the VSCode's command palette executes `fpm test` command.
   - Binding a keyboard shortcut to `workbench.action.tasks.test` may make it easier to run the test task.
