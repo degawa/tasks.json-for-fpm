@@ -1,6 +1,8 @@
 # tasks.json for fpm (fortran package manager) projects
 
 This tasks.json file associates `fpm build` and `fpm test` commands with a build and a test task in VS Code, respectively.
+tasks.json also provides `fpm run` and `fpm install` task. `fpm install` task installs the executable target to `./build` directory.
+`run` task calls `fpm install` before executes the command, demonstrating the usage of `dependsOn`.
 
 ## Requirement
 
