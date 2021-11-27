@@ -1,7 +1,7 @@
 # tasks.json for fpm (fortran package manager) projects
 
 This tasks.json file associates `fpm build` and `fpm test` commands with a build and a test task in VS Code, respectively.
-tasks.json also provides `fpm run` and `fpm install` task. `fpm install` task installs the executable target to `./build` directory.
+tasks.json also provides `fpm run` and `fpm install` task. `fpm install` task installs the executable target to `./build` directory. Runnging this task before debugging may reduce the complexity of debugging task. (see :[launch.json for debugging an executable target built using fpm](#launchjson))
 `run` task calls `fpm install` before executes the command, demonstrating the usage of `dependsOn`.
 
 ## Requirement
@@ -34,6 +34,37 @@ A code snippet below for specifying shell options may be required for the comman
             ]
         }
     },
+```
+
+## launch.json for debugging an executable target built using fpm
+<a id="launchjson"></a>
+fpm creates a build directory with a different name depending on the profile and compiler flag and builds an executable target in it. This behavior makes debugging troublesome when using VSCode, because we cannot reuse the path to the program to be executed in launch.json.
+
+The path setting can be commonized by executing the `fpm install` command to place the executable target in a common relative path `./build/bin/`.
+
+```JSON
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/\"put executable name here\"",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
 ```
 ## Licence
 
