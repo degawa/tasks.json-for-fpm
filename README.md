@@ -38,9 +38,9 @@ A code snippet below for specifying shell options may be required for the comman
 
 ## launch.json for debugging an executable target built using fpm
 <a id="launchjson"></a>
-fpm creates a build directory with a different name depending on the profile and compiler flag and builds an executable target in it. This behavior makes debugging troublesome when using VSCode, because we cannot reuse the path to the program to be executed in launch.json.
+fpm creates a build directory with a different name depending on the profile and compiler flag and builds an executable target in it. This behavior makes debugging troublesome when using VSCode, because we cannot reuse the path to the program to be executed in `launch.json`.
 
-The path setting can be commonized by executing the `fpm install` command to place the executable target in a common relative path `./build/bin/`.
+The path setting can be commonized by executing the `fpm install` command to place the executable target in a common path `${workspaceFolder}/build/bin/`.
 
 ```JSON
     "configurations": [
